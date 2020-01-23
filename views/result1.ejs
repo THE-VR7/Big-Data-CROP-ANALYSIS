@@ -1,0 +1,26 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background: linear-gradient(to right, orange, brown);
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; color: wheat;">You can Grow <%= userinfo.cropA %></h1>
+    <h3 style="text-align: center; color: wheat;">In <%= userinfo.districtA %>, <%= userinfo.StateA %></h3>    
+    <!-- <h3 style="text-align: center; color: wheat;">In <%= userinfo.seasonA %> Season</h3> -->
+    <% if(result.length == 0){ %>
+        <h1 style="text-align: center;">Sorry! No crop's found.</h1>
+        <% } 
+        else{ %>
+    <h1 style="text-align: center;">With the  <strong>Profit of &#8377 <%= (result[0].Price * userinfo.areaA) %> </strong> in Area of <strong><%= userinfo.areaA %>  hectare</strong> With Production <strong><%= (result[0].Area * userinfo.areaA) %> quintal</strong></h1>
+    <% } %>
+</body>
+
+</html>

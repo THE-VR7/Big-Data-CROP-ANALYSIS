@@ -1,0 +1,59 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background: linear-gradient(to right, orange, brown);
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; color: wheat;">Crops You can Grow</h1>
+    <h3 style="text-align: center; color: wheat;">In <%= userinfo.district %>, <%= userinfo.State %></h3>    
+    <h3 style="text-align: center; color: wheat;">In <%= userinfo.season %> Season</h3>
+    <section style="padding-left: 30%; padding-right: 50%; padding-top: 50px;">
+            <table style="border: 1px solid black; width: 550px; height: 300px; background-color: wheat;">
+        <th  >
+        <td  style="border: 1px  solid black; font-size: x-large; text-align: center; "><b>Crop</b> &nbsp;&nbsp;&nbsp;</td>
+        <td  style="border: 1px  solid rgb(2, 1, 1); font-size:x-large; text-align: center; "><b>Production / Area</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <!-- <td  style="border: 1px  solid black; "><b>Average Profit  in thousand</b></td> -->
+        </th>
+        <% var arr=[""] 
+    var n=0 
+    var t,m=0
+    if(result.length >= 3){
+        t=3
+    }
+    else{
+        t=result.length
+    }
+    for(var i = 0;i < t;i++) { 
+        m = 1
+        if(arr. indexOf(result[i].Crop) == -1 ) { %>
+            
+        <!-- <% console.log(i) %> -->
+        <tr>
+            <td ></td>
+            <td style="border: 1px  solid black;font-size:large; text-align: center; "><%= result[i].Crop %>&nbsp;&nbsp;&nbsp;</td>
+            <td style="border: 1px  solid black; font-size:large; text-align: center; "><%= result[i].PA %></td>
+        </tr>
+
+        <% arr.push(result[i].Crop) 
+            n += 1 } 
+            console.log(result[i].PA)
+        }
+        if(m==0){ %>
+    </table>
+    </section>
+    <h1 style="text-align: center;">Sorry! no crop found :(</h1>
+    <% }
+        console.log(n) %>
+    <script>
+    </script>
+</body>
+
+</html>
