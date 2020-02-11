@@ -130,7 +130,8 @@
             font-weight: 600;
             width: 200px;
             position: absolute;
-            top: 50% left: 50%;
+            top: 50%;
+            left: 50%;
         }
 
         .gallery-box {
@@ -517,10 +518,10 @@
         </form>
     </section>
 
-    <section class="banner">
+    <!-- <section class="banner">
         <h2>2- Approximate profit in the required amount of area </h2>
             <form action="/searchbycrop" method="POST">
-                <!-- <input type="text" placeholder="state" style="display: none;" name="State" value="Hi" id="sts2"> -->
+                <input type="text" placeholder="state" style="display: none;" name="State" value="Hi" id="sts2">
                 <select onchange="print_city1('statecrop1', this.selectedIndex);m(this.selectedIndex);" id="stscrop1" name="StateA"
                     class="form-control" required>
                     <option value="" selected="selected">Select State</option>
@@ -531,7 +532,7 @@
                 <select id ="crop" class="form-control" name="cropA" onchange="document.getElementById('share_type').style.display='inline'" required style="display: none;">
                     <option value="" selected="selected">Select Crop</option>
                 </select>
-                <!-- <div id="sharecrop1">Want to Share Your Area,  &nbsp;<a id="share1crop1" onclick="share1()">Click Here</a></div> -->
+                <div id="sharecrop1">Want to Share Your Area,  &nbsp;<a id="share1crop1" onclick="share1()">Click Here</a></div>
                 <div id="share_type" id="sharearea1" class="inputbox" required style="display: none;">
                     <input type="text" id="area" onkeypress="share_check()" name="areaA" placeholder="Enter Area in hectare" value="">
                 </div>
@@ -542,7 +543,7 @@
                     </div>
                 </div>
             </form>
-        </section>
+        </section> -->
 
     <section class="users-feedback">
         <h1 style="text-align: center;font-family:cursive">Other Farmers' reviews</h1>

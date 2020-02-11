@@ -6,7 +6,7 @@ var bodyParser=require("body-parser");
 var passportLocalMongoose=require("passport-local-mongoose");
 
 
-mongoose.connect('mongodb://localhost:27017/bidataui'); 
+mongoose.connect('mongodb://localhost:27017/cropdata'); 
 var db=mongoose.connection; 
 db.on('error', console.log.bind(console, "connection error")); 
 db.once('open', function(callback){ 
@@ -57,15 +57,15 @@ app.post('/search', function(req, res)
 {
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        var dbo = db.db("croppredict");
+        var dbo = db.db("cropdata");
         
-        dbo.collection("crop_prod").find({'State_Name': req.body.State,'District_Name':req.body.district,'Season':req.body.season}).sort({'PA':-1}).toArray(function(err, result) {
+        dbo.collection("data").find({'State_Name': req.body.State,'District_Name':req.body.district,'Season':req.body.season}).sort({'PA':-1}).toArray(function(err, result) {
           if (err) throw err;
           console.log("Connected to second")
-          var t;
-          console.log(result);
+          // var t;
+          // console.log(result);
           // console.log(req.body)
-        var userinfo=req.body
+        var userinfo=req.body;
         res.render('result',{result : result,userinfo:userinfo})
           // console.log(req.body.area)
         //   console.log(result[0])
@@ -79,16 +79,18 @@ app.post('/searchbycrop', function(req, res)
 {
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        var dbo = db.db("croppredict");
-        dbo.collection("crop_prod").find({'State_Name': req.body.StateA,'District_Name':req.body.districtA,'Crop':req.body.cropA}).toArray(function(err, result) {
+        var dbo = db.db("cropdata");
+        dbo.collection("data").find({'State_Name': req.body.StateA,'District_Name':req.body.districtA,'Crop':req.body.cropA}).toArray(function(err, result) {
           if (err) throw err;
           console.log("Connected to third")
           var t;
+          console.log("Result is");
           console.log(result);
-          console.log(req.body)
+          console.log("Request starts from here");
+          console.log(req.body);
         var userinfo=req.body
         res.render('result1',{result : result,userinfo:userinfo})
-          // console.log(req.body.area)
+           console.log(req.body.area)
         //   console.log(result[0])
           db.close();
         });

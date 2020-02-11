@@ -12,6 +12,7 @@
     </style>
 </head>
 <body>
+    
     <h1 style="text-align: center; color: wheat;">Crops You can Grow</h1>
     <h3 style="text-align: center; color: wheat;">In <%= userinfo.district %>, <%= userinfo.State %></h3>    
     <h3 style="text-align: center; color: wheat;">In <%= userinfo.season %> Season</h3>
@@ -35,11 +36,11 @@
         m = 1
         if(arr. indexOf(result[i].Crop) == -1 ) { %>
             
-        <!-- <% console.log(i) %> -->
+        <!-- <% console.log(result[i]) %> -->
         <tr>
             <td ></td>
             <td style="border: 1px  solid black;font-size:large; text-align: center; "><%= result[i].Crop %>&nbsp;&nbsp;&nbsp;</td>
-            <td style="border: 1px  solid black; font-size:large; text-align: center; "><%= result[i].PA %></td>
+            <td style="border: 1px  solid black; font-size:large; text-align: center; "><%= (result[i].Production * 100/result[i].Area) %> %</td>
         </tr>
 
         <% arr.push(result[i].Crop) 
