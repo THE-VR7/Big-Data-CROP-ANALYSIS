@@ -59,7 +59,7 @@ app.post('/search', function(req, res)
         if (err) throw err;
         var dbo = db.db("cropdata");
         
-        dbo.collection("data").find({'State_Name': req.body.State,'District_Name':req.body.district,'Season':req.body.season}).sort({'PA':-1}).toArray(function(err, result) {
+        dbo.collection("data").find({'State_Name': req.body.State,'District_Name':req.body.district,'Season':req.body.season}).sort({'P_A':-1}).toArray(function(err, result) {
           if (err) throw err;
           console.log("Connected to second")
           // var t;
