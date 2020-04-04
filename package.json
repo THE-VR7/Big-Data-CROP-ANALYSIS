@@ -10,8 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
+    "mapbox-gl": "^1.9.1",
     "mongodb": "^3.3.2",
     "mongoose": "^5.7.1",
     "nodemon": "^1.19.2",

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Best Crops</title>
     <style>
         body{
             background: linear-gradient(to right, orange, brown);
@@ -13,7 +13,7 @@
 </head>
 <body>
     
-    <h1 style="text-align: center; color: wheat;">Crops You can Grow</h1>
+    <h1 style="text-align: center; color: wheat;">Crop You can Grow</h1>
     <h3 style="text-align: center; color: wheat;">In <%= userinfo.district %>, <%= userinfo.State %></h3>    
     <h3 style="text-align: center; color: wheat;">In <%= userinfo.season %> Season</h3>
     <section style="padding-left: 30%; padding-right: 50%; padding-top: 50px;">
@@ -40,12 +40,12 @@
         <tr>
             <td ></td>
             <td style="border: 1px  solid black;font-size:large; text-align: center; "><%= result[i].Crop %>&nbsp;&nbsp;&nbsp;</td>
-            <td style="border: 1px  solid black; font-size:large; text-align: center; "><%= (result[i].Production * 100/result[i].Area) %> %</td>
+            <td style="border: 1px  solid black; font-size:large; text-align: center; "><%= (parseFloat(result[i].Production) * 100.00/parseFloat(result[i].Area)).toFixed(2) %> %</td>
         </tr>
 
         <% arr.push(result[i].Crop) 
             n += 1 } 
-            console.log(result[i].PA)
+            console.log(result[i].P_A)
         }
         if(m==0){ %>
     </table>
