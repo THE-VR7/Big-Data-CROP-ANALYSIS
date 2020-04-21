@@ -179,6 +179,18 @@
             padding-bottom: 50px;
         }
 
+        .users-review:hover {
+            border: 2px solid orange;
+            transition-duration: 0.4s;
+            transform: scale(1.1);
+        }
+
+        .users-review:hover ~ .rumble {
+            border: 2px solid orange;
+            transition-duration: 0.4s;
+            transform: scale(1.3);
+        }
+
         .users-review p {
             padding: 50px 10px 10px 10px;
         }
@@ -216,7 +228,7 @@
             font-family: cursive;
             font-weight: 300;
             font-size: 60px;
-            color: white;
+            color: seashell;
             padding-left: 160px;
         }
 
@@ -318,8 +330,6 @@
             margin-left: 520px;
         }
 
-
-
         @media (max-width: 768px) {
             .submit-btn {
                 width: 100%;
@@ -400,7 +410,7 @@
     </section>
 
     <section class="features">
-        <h1 style="text-align: center; padding-bottom: 30px; font-family: cursive">Top 3 Areas for farming</h1>
+        <h1 style="text-align: center;font-size: 52px; padding-bottom: 30px; font-family: cursive">Top 3 Areas for farming</h1>
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -434,7 +444,7 @@
                 <div class="col-md-4">
                     <div class="feature-box">
                         <div class="feature-img">
-                            <img src="https://dbpost.com/wp-content/uploads/2019/07/cashewnut-cultivation.jpg">
+                            <img src="https://www.tripuraindia.in/assets/upload_images/news_images/Cashew-nut.jpg" style="height: 234px">
                         </div>
                         <span class="price"><strong>GDP</strong> ₹9.62 lakh crore</span> &nbsp
                         <span class="ratings">
@@ -497,9 +507,9 @@
         </div>
     </section>
     <h1 style="text-align: center; color: black; font-size: 70px;">Questionaire Panel</h1>
-    <section class="banner">
-            <h2>1- Want to get the information about best three crops of your District with the production by area of a particular season ? </h2>
-        <form action="/search" method="POST">
+    <section class="banner" style="height: 33vh;">
+            <h2 style="margin-left: 2.4vh;">1- Want to get the information about best three crops of your District with the production by area of a particular season ? </h2>
+        <form action="/search" method="POST" style="width: 95vw;margin-left: 3vh;>
             <select onchange="print_city('state', this.selectedIndex);m(this.selectedIndex);" id="sts" name="State"
                 class="form-control" required>
                 <option value="" selected="selected">Select State</option>
@@ -519,9 +529,9 @@
         </form>
     </section>
 
-    <section class="banner">
-        <h2>2- Know more about crop in your area </h2>
-            <form action="/searchbycrop" method="POST">
+    <section class="banner" style="height: 55vh;">
+        <h2 style="margin-left: 2.4vh;">2- Know more about crop in your area </h2>
+            <form action="/searchbycrop" method="POST" style="width: 95vw;margin-left: 3vh;">
                 <input type="text" placeholder="state" style="display: none;" name="State" value="Hi" id="sts2">
                 <select onchange="print_city1('statecrop1', this.selectedIndex);m(this.selectedIndex);" id="stscrop1" name="StateA"
                     class="form-control" required>
@@ -558,7 +568,7 @@
                         <h5>Ram Kumar</h5>
                         <small>Rajasthan</small>
                     </div>
-                    <img
+                    <img class="rumble"
                         src="https://cdn.downtoearth.org.in/library/large/2019-07-24/0.37377100_1563954075_gettyimages-498281885.jpg">
                 </div>
 
@@ -569,7 +579,7 @@
                         <h5>Shyam Kumar</h5>
                         <small>Maharastra</small>
                     </div>
-                    <img
+                    <img class="rumble"
                         src="https://img.fotocommunity.com/indian-farmer-4183b00e-41ea-4a54-af6c-b991a9eeef0a.jpg?height=1000">
                 </div>
 
@@ -580,7 +590,7 @@
                         <h5>Hari Singh</h5>
                         <small>Andaman & Nicobar Islands</small>
                     </div>
-                    <img
+                    <img class="rumble"
                         src="https://researchmatters.in/sites/default/files/styles/large_800w_scale/public/farmer-4365877_1920.jpg?itok=FUZXY9sO">
                 </div>
 
