@@ -1,6 +1,7 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
+var request = require("request");
 // var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
 var passportLocalMongoose = require("passport-local-mongoose");
@@ -67,17 +68,58 @@ app.post("/search", function (req, res) {
       .toArray(function (err, result) {
         if (err) throw err;
         console.log("Connected to second");
-        // var t;
-        console.log("result is");
-        console.log(result);
-        console.log("req body is");
-        console.log(req.body);
         var userinfo = req.body;
-        res.render("result", { result: result, userinfo: userinfo });
-        // console.log(req.body.area)
-        // console.log(result[0])
-        db.close();
+        let temp = [];
+        // var t;
+        // console.log("result is");
+        // console.log(result);
+        // console.log("req body is");
+        // console.log(req.body);
+        var sc = "";
+        var ds =
+          req.body.district.charAt(0).toUpperCase() +
+          req.body.district.slice(1).toLowerCase();
+        console.log(ds);
+
+        if (req.body.State.localeCompare("Andhra Pradesh") == 0) sc = "AP";
+
+        var options = {
+          method: "GET",
+          url:
+            "https://covid-19-india-data-by-zt.p.rapidapi.com/GetIndiaDistrictWiseDataForState",
+          qs: { statecode: sc },
+          headers: {
+            "x-rapidapi-host": "covid-19-india-data-by-zt.p.rapidapi.com",
+            "x-rapidapi-key":
+              "5766e3bc55msh528a02590bb44a6p194934jsnb342622fb002",
+          },
+        };
+
+        request(options, function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+            var details = JSON.parse(body);
+
+            details["data"].forEach((district) => {
+              if (district["name"].localeCompare(ds) == 0) {
+                temp[0] = district["active"];
+                temp[1] = district["deceased"];
+                temp[2] = district["confirmed"];
+                temp[3] = district["recovered"];
+              }
+            });
+          }
+          res.render("result", {
+            result: result,
+            userinfo: userinfo,
+            apidata: temp,
+          });
+          console.log(temp);
+        });
       });
+
+    // console.log(req.body.area)
+    // console.log(result[0])
+    db.close();
   });
 });
 

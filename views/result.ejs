@@ -53,6 +53,30 @@
     <h1 style="text-align: center;">Sorry! no crop found :(</h1>
     <% }
         console.log(n) %>
+        <section style="position: absolute;margin-top: 10px;transform: translate(152.5%,16.5%);">
+            <h1 style="font-size: 50px;margin-bottom:-25px !important;">Covid-19 Check</h1>
+            <h4 style="font-size: 23px;position: relative;left:1.35em">Details about your area:</h4>
+            <br><br>
+        <ul style="font-size:28px;margin-top: -28px;">
+            <li> <strong>Active Cases:</strong> &nbsp; <%= apidata[0] %></li>
+            <li> <strong> Deceased People:</strong> &nbsp; <%= apidata[1] %></li>
+            <li> <strong> Confirmed Cases: &nbsp;</strong> <%= apidata[2] %></li>
+            <li> <strong> Recovered People: &nbsp;</strong> <%= apidata[3] %> </li>
+        </ul>
+
+        <div style="font-size:36px;font-weight:bolder;margin-top: -17px;position: relative;left:-1em">
+            <% if (apidata[2] >= 50) { %>
+            <p> Your region is in Red Zone.  </p>
+            <% } else if (apidata[2] >= 25) { %>
+            <p> Your region is in Orange Zone. </p>
+            <% } else { %>
+            <p> Your region is in Green Zone. </p>
+            <% } %>
+        </div>
+
+
+
+        </section>
     <script>
     </script>
 </body>
