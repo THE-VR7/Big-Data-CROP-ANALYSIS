@@ -57,6 +57,8 @@
             <h1 style="font-size: 50px;margin-bottom:-25px !important;">Covid-19 Check</h1>
             <h4 style="font-size: 23px;position: relative;left:1.35em">Details about your area:</h4>
             <br><br>
+
+        <% if(apidata.length != 0) { %>    
         <ul style="font-size:28px;margin-top: -28px;">
             <li> <strong>Active Cases:</strong> &nbsp; <%= apidata[0] %></li>
             <li> <strong> Deceased People:</strong> &nbsp; <%= apidata[1] %></li>
@@ -73,6 +75,13 @@
             <p> Your region is in Green Zone. </p>
             <% } %>
         </div>
+        <% } else { %>
+        <p style="font-size:36px;font-weight:bolder;margin-top: -17px;position: relative;left:-1em">Sorry! Currently No data is</p>
+        <p style="font-size:36px;font-weight:bolder;margin-top: -17px;position: relative;left:-1em;top:-0.5em"> available for your region.</p>
+        <% } %>
+
+
+
 
 
 

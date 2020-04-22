@@ -75,13 +75,176 @@ app.post("/search", function (req, res) {
         // console.log(result);
         // console.log("req body is");
         // console.log(req.body);
+        function capitalize(str) {
+          str = str.split(" ");
+
+          for (var i = 0, x = str.length; i < x; i++) {
+            str[i] = str[i][0].toUpperCase() + str[i].substr(1).toLowerCase();
+          }
+
+          return str.join(" ");
+        }
+
         var sc = "";
-        var ds =
-          req.body.district.charAt(0).toUpperCase() +
-          req.body.district.slice(1).toLowerCase();
+        var ds = capitalize(req.body.district);
+        // var ds =
+        //   req.body.district.charAt(0).toUpperCase() +
+        //   req.body.district.slice(1).toLowerCase();
         console.log(ds);
 
-        if (req.body.State.localeCompare("Andhra Pradesh") == 0) sc = "AP";
+        switch (req.body.State) {
+          case "Andhra Pradesh":
+            sc = "AP";
+            break;
+
+          case "Arunanchal Pradesh":
+            sc = "AR";
+            break;
+
+          case "Assam":
+            sc = "AS";
+            break;
+
+          case "Bihar":
+            sc = "BR";
+            break;
+
+          case "Chhattisgarh":
+            sc = "CT";
+            break;
+
+          case "Goa":
+            sc = "GA";
+            break;
+
+          case "Gujarat":
+            sc = "GP";
+            break;
+
+          case "Haryana":
+            sc = "HR";
+            break;
+
+          case "Himachal Pradesh":
+            sc = "HP";
+            break;
+
+          case "Jharkhand":
+            sc = "JH";
+            break;
+
+          case "Karnataka":
+            sc = "KA";
+            break;
+
+          case "Kerala":
+            sc = "KL";
+            break;
+
+          case "Madhya Pradesh":
+            sc = "MP";
+            break;
+
+          case "Maharashtra":
+            sc = "MH";
+            break;
+
+          case "Manipur":
+            sc = "MN";
+            break;
+
+          case "Meghalaya":
+            sc = "ML";
+            break;
+
+          case "Mizoram":
+            sc = "MZ";
+            break;
+
+          case "Nagaland":
+            sc = "NL";
+            break;
+
+          case "Odisha":
+            sc = "OR";
+            break;
+
+          case "Punjab":
+            sc = "PB";
+            break;
+
+          case "Rajasthan":
+            sc = "RJ";
+            break;
+
+          case "Sikkim":
+            sc = "SK";
+            break;
+
+          case "Tamil Nadu":
+            sc = "TN";
+            break;
+
+          case "Telangana":
+            sc = "TG";
+            break;
+
+          case "Tripura":
+            sc = "TR";
+            break;
+
+          case "Uttarakhand":
+            sc = "UT";
+            break;
+
+          case "Uttar Pradesh":
+            sc = "UP";
+            break;
+
+          case "West Bengal":
+            sc = "WB";
+            break;
+
+          case "Andaman and Nicobar Islands":
+            sc = "AN";
+            break;
+
+          case "Chandigarh":
+            sc = "CH";
+            break;
+
+          case "Dadra and Nagar Haveli":
+            sc = "DN";
+            break;
+
+          case "Daman and Diu":
+            sc = "DD";
+            break;
+
+          case "Delhi":
+            sc = "DL";
+            break;
+
+          case "Jammu and Kashmir":
+            sc = "JK";
+            break;
+
+          case "	Ladakh":
+            sc = "LA";
+            break;
+
+          case "Lakshadweep":
+            sc = "LD";
+            break;
+
+          case "Puducherry":
+            sc = "PY";
+            break;
+
+          default:
+            console.log("No data available");
+        }
+        // if (req.body.State.localeCompare("Andhra Pradesh") == 0) sc = "AP";
 
         var options = {
           method: "GET",
@@ -98,6 +261,7 @@ app.post("/search", function (req, res) {
         request(options, function (error, response, body) {
           if (!error && response.statusCode == 200) {
             var details = JSON.parse(body);
+            //console.log(details);
 
             details["data"].forEach((district) => {
               if (district["name"].localeCompare(ds) == 0) {
@@ -105,15 +269,17 @@ app.post("/search", function (req, res) {
                 temp[1] = district["deceased"];
                 temp[2] = district["confirmed"];
                 temp[3] = district["recovered"];
+                console.log(temp);
               }
             });
+            // console.log(temp);
           }
           res.render("result", {
             result: result,
             userinfo: userinfo,
             apidata: temp,
           });
-          console.log(temp);
+          // console.log(temp);
         });
       });
 
