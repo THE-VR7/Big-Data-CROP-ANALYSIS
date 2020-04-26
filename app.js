@@ -12,7 +12,7 @@ db.on("error", console.log.bind(console, "connection error"));
 db.once("open", function (callback) {
   console.log("connection to first");
 });
-
+const port = process.env.port;
 var MongoClient = require("mongodb").MongoClient;
 var url = "mongodb://localhost:27017/";
 
@@ -321,6 +321,6 @@ app.post("/searchbycrop", function (req, res) {
 
 app.get("/result");
 
-app.listen(3000, function () {
-  console.log("Server started at the port 3000...");
+app.listen(port, function () {
+  console.log("Server started at the port "+port);
 });
