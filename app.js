@@ -3,16 +3,15 @@ var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 var request = require("request");
 // var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
-
+const port = process.env.PORT || 8080;
 var passportLocalMongoose = require("passport-local-mongoose");
 
-mongoose.connect("mongodb://localhost:27017/cropdata");
+mongoose.connect(process.env.mongoo_url || "mongodb://localhost:27017/cropdata");
 var db = mongoose.connection;
 db.on("error", console.log.bind(console, "connection error"));
 db.once("open", function (callback) {
   console.log("connection to first");
 });
-const port = process.env.port;
 var MongoClient = require("mongodb").MongoClient;
 var url = "mongodb://localhost:27017/";
 
@@ -322,5 +321,5 @@ app.post("/searchbycrop", function (req, res) {
 app.get("/result");
 
 app.listen(port, function () {
-  console.log("Server started at the port "+port);
+  console.log('Server started at the port'+port);
 });
