@@ -13,7 +13,7 @@ db.once("open", function (callback) {
   console.log("connection to first");
 });
 var MongoClient = require("mongodb").MongoClient;
-var url = "mongodb://localhost:27017/";
+var url = process.env.mongoo_url || "mongodb://localhost:27017/";
 
 var app = express();
 
